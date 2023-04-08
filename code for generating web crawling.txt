@@ -1,0 +1,25 @@
+import requests
+from bs4 import BeautifulSoup
+#code for flipkart web crawling
+
+import pandas as pd
+url='https://www.flipkart.com/mobiles/mi~brand/pr?sid=tyy,4io&otracker=nmenu_sub_Electronics_0_Mi'
+req=requests.get(url)
+
+content=BeautifulSoup(req.content,'html.parser')
+print(content)
+  
+name=content.find_all('div',{"class":"_4rR01T"})
+print(name[0].text)
+  
+price=content.find_all('div',{"class":"_30jeq3"})
+print(price[0].text)
+
+discount=content.find_all('div',{"class":"_3Ay6Sb"})
+print(discount[0].text)
+  
+##Output of the following print statements:
+
+REDMI 10 Power (Sporty Orange, 128 GB)
+₹11,759
+38% off
